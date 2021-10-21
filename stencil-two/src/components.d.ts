@@ -6,6 +6,20 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CheckboxBold {
+        /**
+          * If the box is checked by default
+         */
+        "checked"?: boolean;
+        /**
+          * If the box box should be disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * The unique Id
+         */
+        "id": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +36,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLCheckboxBoldElement extends Components.CheckboxBold, HTMLStencilElement {
+    }
+    var HTMLCheckboxBoldElement: {
+        prototype: HTMLCheckboxBoldElement;
+        new (): HTMLCheckboxBoldElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +49,25 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "checkbox-bold": HTMLCheckboxBoldElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CheckboxBold {
+        /**
+          * If the box is checked by default
+         */
+        "checked"?: boolean;
+        /**
+          * If the box box should be disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * The unique Id
+         */
+        "id"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +83,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "checkbox-bold": CheckboxBold;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +91,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "checkbox-bold": LocalJSX.CheckboxBold & JSXBase.HTMLAttributes<HTMLCheckboxBoldElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

@@ -18,7 +18,7 @@
   },
   "include": [
     "src"
-  ],
+, ".storybook/main.js"  ],
   "exclude": [
     "node_modules"
   ]
