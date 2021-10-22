@@ -1,0 +1,1 @@
+import{p as e,b as d}from"./p-3a9d6636.js";(()=>{const d=import.meta.url,c={};return""!==d&&(c.resourcesUrl=new URL(".",d).href),e(c)})().then((e=>d([["p-a715989c",[[4,"checkbox-bold",{id:[1],checked:[4],disabled:[4],isChecked:[32]}],[1,"my-component",{first:[1],middle:[1],last:[1]}]]]],e)));
