@@ -34,6 +34,10 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface RatingStars {
+        "maxValue": number;
+        "value": number;
+    }
 }
 declare global {
     interface HTMLCheckboxBoldElement extends Components.CheckboxBold, HTMLStencilElement {
@@ -48,9 +52,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLRatingStarsElement extends Components.RatingStars, HTMLStencilElement {
+    }
+    var HTMLRatingStarsElement: {
+        prototype: HTMLRatingStarsElement;
+        new (): HTMLRatingStarsElement;
+    };
     interface HTMLElementTagNameMap {
         "checkbox-bold": HTMLCheckboxBoldElement;
         "my-component": HTMLMyComponentElement;
+        "rating-stars": HTMLRatingStarsElement;
     }
 }
 declare namespace LocalJSX {
@@ -82,9 +93,14 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface RatingStars {
+        "maxValue"?: number;
+        "value"?: number;
+    }
     interface IntrinsicElements {
         "checkbox-bold": CheckboxBold;
         "my-component": MyComponent;
+        "rating-stars": RatingStars;
     }
 }
 export { LocalJSX as JSX };
@@ -93,6 +109,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "checkbox-bold": LocalJSX.CheckboxBold & JSXBase.HTMLAttributes<HTMLCheckboxBoldElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "rating-stars": LocalJSX.RatingStars & JSXBase.HTMLAttributes<HTMLRatingStarsElement>;
         }
     }
 }

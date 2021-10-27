@@ -1,4 +1,4 @@
-import { r as registerInstance, h, H as Host } from './index-179beaa1.js';
+import { r as registerInstance, h, H as Host } from './index-be9951dc.js';
 
 const checkboxBoldCss = ".test-div{display:flex;flex-direction:row;border:1px solid grey;background-color:rgb(243, 180, 151);width:200px;padding:5px}.checked-bold{margin:30px;background-color:hotpink;font-weight:900;font-size:40px;line-height:48px}";
 

@@ -56,13 +56,51 @@ let MyComponent$1 = class extends HTMLElement {
   static get style() { return myComponentCss; }
 };
 
+const ratingStarsCss = ":host{display:block}.rating{color:orange}";
+
+let RatingStars$1 = class extends HTMLElement {
+  constructor() {
+    super();
+    this.__registerHost();
+    attachShadow(this);
+    this.maxValue = 5;
+    this.value = 0;
+    this.starList = [];
+  }
+  setValue(newValue) {
+    this.internalValue = newValue;
+    this.createStarList(this.internalValue);
+  }
+  componentWillLoad() {
+    this.createStarList(this.value);
+  }
+  createStarList(numberOfStars) {
+    let starList = [];
+    for (let i = 1; i <= this.maxValue; i++) {
+      if (i <= numberOfStars) {
+        starList.push(h("span", { class: "rating", onMouseOver: () => this.createStarList(i), onMouseOut: () => this.createStarList(this.value), onClick: () => this.setValue(i) }, "\u2605"));
+      }
+      else {
+        starList.push(h("span", { class: "rating", onMouseOver: () => this.createStarList(i), onMouseOut: () => this.createStarList(this.value), onClick: () => this.setValue(i) }, "\u2606"));
+      }
+    }
+    this.starList = starList;
+  }
+  render() {
+    return (h("div", null, this.starList));
+  }
+  static get style() { return ratingStarsCss; }
+};
+
 const CheckboxBold = /*@__PURE__*/proxyCustomElement(CheckboxBold$1, [4,"checkbox-bold",{"id":[1],"checked":[4],"disabled":[4],"isChecked":[32]}]);
 const MyComponent = /*@__PURE__*/proxyCustomElement(MyComponent$1, [1,"my-component",{"first":[1],"middle":[1],"last":[1]}]);
+const RatingStars = /*@__PURE__*/proxyCustomElement(RatingStars$1, [1,"rating-stars",{"maxValue":[2,"max-value"],"value":[2],"starList":[32],"internalValue":[32]}]);
 const defineCustomElements = (opts) => {
   if (typeof customElements !== 'undefined') {
     [
       CheckboxBold,
-  MyComponent
+  MyComponent,
+  RatingStars
     ].forEach(cmp => {
       if (!customElements.get(cmp.is)) {
         customElements.define(cmp.is, cmp, opts);
@@ -71,4 +109,4 @@ const defineCustomElements = (opts) => {
   }
 };
 
-export { CheckboxBold, MyComponent, defineCustomElements };
+export { CheckboxBold, MyComponent, RatingStars, defineCustomElements };

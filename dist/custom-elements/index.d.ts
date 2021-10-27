@@ -14,6 +14,12 @@ export const MyComponent: {
   new (): MyComponent;
 };
 
+interface RatingStars extends Components.RatingStars, HTMLElement {}
+export const RatingStars: {
+  prototype: RatingStars;
+  new (): RatingStars;
+};
+
 /**
  * Utility to define all custom elements within this package using the tag name provided in the component's source. 
  * When defining each custom element, it will also check it's safe to define by:
